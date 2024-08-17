@@ -4,12 +4,25 @@ import HouseList from "./houseList";
 import House from "./house";
 
 const App = () => {
-    const [selectedHouse, setSelectedHouse] = useState();
-    return(
-        <>
-        <Banner headerText = "Provinding Houses over the United Kingdom"/>
-        {selectedHouse ? <House house = {selectedHouse}/> : <HouseList/>}
-        </>
-    )
+  const [selectedHouse, setSelectedHouse] = useState();
+
+  const setSelectedHouseWrapper = (house) => {
+    //do checks on house
+    setSelectedHouse(house);
+  };
+
+  return (
+    <>
+      <Banner>
+        <div>Providing houses all over the world</div>
+      </Banner>
+      {selectedHouse ? (
+        <House house={selectedHouse} />
+      ) : (
+        <HouseList selectHouse={setSelectedHouseWrapper} />
+      )}
+    </>
+  );
 };
+
 export default App;
